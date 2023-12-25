@@ -1,0 +1,11 @@
+﻿EF Core
+*NET geliştiricilerinin .NET nesneleri(class,interface vb.) kullanarak bir veri tabanı ile çalışmasına olanak tanır.
+*Genellikle yazılması gereken veri erişim kodunun çoğuna olan ihtiyacı ortadan kaldırır.
+*Entity Framework Microsoft tarafından geliştirilmiş ORM(Object Relational Mapping) çatılarındandır.
+Inversion of Control
+*Framework'ler request ve response'ları yönetmemizi, kontrol etmemizi sağlıyor. Kontrolü bana devret.
+Add-Migration isim_ver
+Update-Database
+*Type Configuration neden ihtiyaç var=bazı alanlara default değerler vermek için bazı alanları kısıtlamak için kullanırız.
+Remove-Migration
+*Inversion of Control
