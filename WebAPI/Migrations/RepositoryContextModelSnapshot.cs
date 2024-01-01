@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebAPI.Repositories;
+using Repositories.EFCore;
 
 #nullable disable
 
@@ -21,7 +21,7 @@ namespace WebAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebAPI.Models.Book", b =>
+            modelBuilder.Entity("Entities.Models.Book", b =>
                 {
                     b.Property<int>("BookID")
                         .ValueGeneratedOnAdd()

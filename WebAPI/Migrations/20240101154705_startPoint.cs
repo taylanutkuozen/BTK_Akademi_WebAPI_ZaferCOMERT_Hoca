@@ -1,14 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+
 #nullable disable
+
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class seedData : Migration
+    public partial class startPoint : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Books",
+                columns: table => new
+                {
+                    BookID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Books", x => x.BookID);
+                });
+
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "BookID", "Price", "Title" },
@@ -19,23 +36,12 @@ namespace WebAPI.Migrations
                     { 3, 125m, "Incognito" }
                 });
         }
+
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookID",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookID",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Books",
-                keyColumn: "BookID",
-                keyValue: 3);
+            migrationBuilder.DropTable(
+                name: "Books");
         }
     }
 }

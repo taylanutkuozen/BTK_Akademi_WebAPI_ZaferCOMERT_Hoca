@@ -9,3 +9,16 @@ Update-Database
 *Type Configuration neden ihtiyaç var=bazı alanlara default değerler vermek için bazı alanları kısıtlamak için kullanırız.
 Remove-Migration
 *Inversion of Control
+----------------
+*Soyutlama yaparken uygulamanın detayları ile ilgilenmeyiz. Önemli olan kural tanımlamaktır. Hangi metotların olacağını söylemektir.
+--------------
+***Eager Loading=Bazen bir nesneye ihtiyacımız olduğunda o nesneyi ve o nesne ile alakalı her şeyi bir defada yüklemek isteriz.
+***Lazy Loading=Uygulama için bir reference vs. olabilir bir yer tutulur bir şekilde fakat ne zaman ihtiyaç olur o zaman referans kullanılır, nesne üretilir gereksiz kaynak kullanımından kaçınılmış olur.
+-------
+Extensions=Servise, MVC nin builder ifadelerine, yeri geldiğinde application'a uzantı metotlar(extension) yazılabilir.
+------------
+Install-Package Microsoft.AspNetCore.MVC.Core -ProjectName Presentation=Microsoft.AspNetCore.MVC.Core paketi ile bir class'a Controller olma özelliği kazandırabiliyor.
+---------
+Drop-Database komutu ile db silinir.
+-----------
+EntitiesLayer-RepositoriesLayer-IRepositoryBase-RepositoryBase-BookRepository-RepositoryManager-LazyLoading-ServiceExtensions-ServicesLayer-BookService-ServiceManager-IoC(ServiceManager)-PresentationLayer-RepositoryContextFactory
