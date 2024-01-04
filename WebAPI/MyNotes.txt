@@ -22,3 +22,14 @@ Install-Package Microsoft.AspNetCore.MVC.Core -ProjectName Presentation=Microsof
 Drop-Database komutu ile db silinir.
 -----------
 EntitiesLayer-RepositoriesLayer-IRepositoryBase-RepositoryBase-BookRepository-RepositoryManager-LazyLoading-ServiceExtensions-ServicesLayer-BookService-ServiceManager-IoC(ServiceManager)-PresentationLayer-RepositoryContextFactory
+-----------
+NLog.Extensions.Logging-LoggerService-LoggerManager-nlog.config-ServisKaydı-BookService tasarımının değiştirilmesi-ServiceManager tasarımı değiştirilmesi
+-------
+Dependency Inversion Principle=üst class'lar alt class'lara bağımlı olmamalıdır. Eğer class'lar arasında bağlantı kurulacaksa bu bağlantıyı interface'ler aracılığı ile geliştirmeliyiz.
+-----------
+developer power shell üzerinde dotnet --help
+dotnet add package paket_ismi
+-----------------
+nlog-project.org/config
+------------
+nlog.development.json
