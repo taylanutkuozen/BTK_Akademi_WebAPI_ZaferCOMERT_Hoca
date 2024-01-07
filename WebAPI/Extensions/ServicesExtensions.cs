@@ -17,5 +17,8 @@ namespace WebAPI.Extensions
         /*AddScoped her kullanıcıya özel olarak bu nesne üretilsin.*/
         public static void ConfigureServicesManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager,ServiceManager>();
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+            services.AddSingleton<ILoggerService, LoggerManager>();
+        /*Logger Servis için bir extension metot. AddSingleton yani statik bir üye varmış gibi düşüneceğiz. logger bir kez üretilecek herkes aynı nesneyi kullanacak. IoC de hatırlanırsa bir nesnenin yaşam döngüsüne karar verebiliriz.*/
     }
 }

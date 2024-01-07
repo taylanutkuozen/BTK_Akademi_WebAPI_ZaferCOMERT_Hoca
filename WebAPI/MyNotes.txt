@@ -32,4 +32,10 @@ dotnet add package paket_ismi
 -----------------
 nlog-project.org/config
 ------------
-nlog.development.json
+nlog.development.json=Development modu organize ettiğimiz
+nlog.production.json=Production modu organize ettiğimiz
+nlog.staging.json=Staging modu organize ettiğimiz
+**Birden fazla dosya ile bu configürasyon ifadesini ilişkilendirebiliriz.
+-----------
+catch düşen her şey loglanır.
+---------

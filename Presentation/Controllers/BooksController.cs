@@ -1,4 +1,4 @@
-﻿using Entities.Models;
+﻿ using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -70,11 +70,6 @@ namespace Presentation.Controllers
                     return BadRequest();//400
                 //check book?
                 var entity = _manager.BookService.GetOneBookByID(id, true);
-                //book gerçekten var mı?
-                if (entity is null)
-                {
-                    return NotFound(); //404
-                }
                 //Id'ler tutuyor mu?
                 if (id != book.BookID)
                 {
@@ -85,7 +80,7 @@ namespace Presentation.Controllers
             }
             catch (Exception exception)
             {
-                return BadRequest(exception.Message);
+               throw new Exception(exception.Message);
             }
         }
         [HttpDelete("{id:int}")]
