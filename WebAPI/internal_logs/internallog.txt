@@ -22,3 +22,19 @@
 2024-01-07 12:32:12.7295 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
 2024-01-07 12:32:12.7660 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
 2024-01-07 12:32:12.8275 Info Configuration initialized.
+2024-01-08 16:52:00.0728 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-08 16:52:00.1640 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-01-08 16:52:00.1916 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\utku.ozen\source\repos\taylanutkuozen\BTK_Akademi_WebAPI_ZaferCOMERT_Hoca\WebAPI\nlog.config
+2024-01-08 16:52:00.2120 Info Configuration initialized.
+2024-01-08 16:53:57.0127 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-08 16:53:57.0519 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-01-08 16:53:57.0678 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\utku.ozen\source\repos\taylanutkuozen\BTK_Akademi_WebAPI_ZaferCOMERT_Hoca\WebAPI\nlog.config
+2024-01-08 16:53:57.0829 Info Configuration initialized.
+2024-01-08 16:58:36.4657 Info AppDomain Shutting down. LogFactory closing...
+2024-01-08 16:58:36.4878 Info LogFactory has been closed.
+2024-01-08 17:04:29.9605 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-08 17:04:29.9923 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-01-08 17:04:30.0051 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\utku.ozen\source\repos\taylanutkuozen\BTK_Akademi_WebAPI_ZaferCOMERT_Hoca\WebAPI\nlog.config
+2024-01-08 17:04:30.0193 Info Configuration initialized.
+2024-01-08 17:05:20.3405 Info AppDomain Shutting down. LogFactory closing...
+2024-01-08 17:05:20.3646 Info LogFactory has been closed.

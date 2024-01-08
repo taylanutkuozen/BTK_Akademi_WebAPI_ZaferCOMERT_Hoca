@@ -39,3 +39,6 @@ nlog.staging.json=Staging modu organize ettiğimiz
 -----------
 catch düşen her şey loglanır.
 ---------
+ErrorModel-ErrorDetails(Serialize)-ConfigureExceptionHandler-UseExceptionHandler-BloklardanArındırma(try,catch,finally)-NotFoundException(abstract)-BookNotFoundException(Sealed)-ImproveConfigureExceptionHandler
+Client-->request gönderir-->Cache,Authentication,CORS<-->DbContext[HttpModules] -->HttpHandlers-->Response-->Client
+-----------
