@@ -1,4 +1,5 @@
-﻿ using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -27,11 +28,8 @@ namespace Presentation.Controllers
         [HttpGet("{id:int}")]
         public IActionResult GetOneBook([FromRoute(Name = "id")] int id)
         {
-                throw new Exception("!!!!!!");
-                var book = _manager.BookService.GetOneBookByID(id, false);
-                if (book is null)
-                    return NotFound();
-                return Ok(book);
+            var book = _manager.BookService.GetOneBookByID(id, false);
+            return Ok(book);
         }
         [HttpPost]
         public IActionResult CreateOneBook([FromBody] Book book)
@@ -67,10 +65,6 @@ namespace Presentation.Controllers
         {
                 //check entity
                 var entity = _manager.BookService.GetOneBookByID(id, true);
-                if (entity is null)
-                {
-                    return NotFound();
-                }
                 bookPatch.ApplyTo(entity);
                 _manager.BookService.UpdateOneBook(id, entity, true);
                 return NoContent();
