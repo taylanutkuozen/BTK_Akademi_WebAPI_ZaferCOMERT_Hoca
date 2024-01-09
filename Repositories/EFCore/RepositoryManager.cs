@@ -15,8 +15,7 @@ namespace Repositories.EFCore
             _context = context;
             _bookRepository = new Lazy<IBookRepository>(() => new BookRepository(_context));
         }
-        public IBookRepository Book => _bookRepository.Value;
-        /*Nesne ancak ve ancak kullanıldığı anda new'lenecek, aksi durumda new'leme yapılmayacak.*/
+        public IBookRepository Book => _bookRepository.Value;/*Nesne ancak ve ancak kullanıldığı anda new'lenecek, aksi durumda new'leme yapılmayacak.*/
         /*IoC kaydı tek bir sefer olması için*/
         public void Save()
         {

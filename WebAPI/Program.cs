@@ -18,6 +18,7 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();/*RepositoryManager generate edilecek*/
 builder.Services.ConfigureServicesManager();
 builder.Services.ConfigureLoggerService();
+builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);

@@ -42,3 +42,9 @@ catch düşen her şey loglanır.
 ErrorModel-ErrorDetails(Serialize)-ConfigureExceptionHandler-UseExceptionHandler-BloklardanArındırma(try,catch,finally)-NotFoundException(abstract)-BookNotFoundException(Sealed)-ImproveConfigureExceptionHandler
 Client-->request gönderir-->Cache,Authentication,CORS<-->DbContext[HttpModules] -->HttpHandlers-->Response-->Client
 -----------
+Automapper
+Source(BookDto-->Id,Title,Price) --> Destination(Book-->Id,Title,Price)
+Dto'daki kaynağı destination'daki kaynağa kopyalamış oluyoruz.
+Automapper-RecordType-Paket Kurulumu-MappingProfile-ServisKaydı-ManagerDüzenlenmesi-SunumKatmanınınDüzenlenmesi
+--------
+sharplab.io-->
