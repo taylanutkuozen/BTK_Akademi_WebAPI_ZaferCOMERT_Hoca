@@ -48,3 +48,10 @@ Dto'daki kaynağı destination'daki kaynağa kopyalamış oluyoruz.
 Automapper-RecordType-Paket Kurulumu-MappingProfile-ServisKaydı-ManagerDüzenlenmesi-SunumKatmanınınDüzenlenmesi
 --------
 sharplab.io-->
+---------
+Accept Header-Respect Browser Accepter Header-AddXmlDataContractSerializerFormatters-Serializable-Restrict Media Type-ReturnHttpNotAcceptable-CustomFormatters-IMvcBuilder Extension Method
+İçerik Pazarlığı(Content Negotiation)=Doğrudan api'yi tüketen client'lar olabilir. 
+Client 1 (Accept:text/csv) diyelim ki csv ile üretmiyoruz ve APImiz pazarlığa açıksa bu nesneyi desteklemiyorsak 406 NotAcceptable
+Client 2 (Accept:application/xml)
+Client n (Accept:application/json)
+**Postman'dan request yaptığımızda Header'da Accept parametresinde */* bu ifade var ise=API pazarlığa kapalı demektir.

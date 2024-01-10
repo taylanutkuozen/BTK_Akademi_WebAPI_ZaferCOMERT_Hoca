@@ -7,7 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 /*LogManager Nlog'tan gelmektedir.Konfigürasyon ifadesi ve path alýnmýþ oldu.*/
-builder.Services.AddControllers()
+builder.Services.AddControllers(config =>
+        {
+            config.RespectBrowserAcceptHeader = true;
+            /*bu ifade bir flag ve bu flag içerik pazarlýðý için açýðýz*/
+            config.ReturnHttpNotAcceptable = true;
+            /*Bir request'i kabul edip etmediðimizi client ile paylaþmak*/
+        })
+    .AddCustomCsvFormatter()
+    .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir*/
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     /*PresentationLayer tarafýndan entegre edildi. bu kod ile Controller yapýsýnýn bu projede çözülebilmesine olanak saðlanmýþ olundu*/
     .AddNewtonsoftJson();
