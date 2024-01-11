@@ -33,12 +33,13 @@ namespace Presentation.Controllers
             return Ok(book);
         }
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book)
+        public IActionResult CreateOneBook([FromBody] BookDtoForInsertion bookDto)
         {
-                if (book is null)
+                if (bookDto is null)
                     return BadRequest();//400
-                _manager.BookService.CreateOneBook(book);
-                return StatusCode(201, book);
+                var book=_manager.BookService.CreateOneBook(bookDto);
+                return StatusCode(201, book); 
+            /*CreatedAtRoute() bu metotla insert iþlemi yaparsak StatusCode yerine, response header'ýna location bilgisi koyabiliriz. Url'ýna eriþebiliriz.*/
         }
         [HttpPut("{id:int}")]
         public IActionResult UpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
@@ -62,12 +63,16 @@ namespace Presentation.Controllers
                 return NoContent();
         }
         [HttpPatch("{id:int}")]
-        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
+        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDto> bookPatch)
         {
                 //check entity
-                var entity = _manager.BookService.GetOneBookByID(id, true);
-                bookPatch.ApplyTo(entity);
-                _manager.BookService.UpdateOneBook(id, new BookDtoForUpdate(entity.BookID,entity.Title,entity.Price), true);
+                var bookDto = _manager.BookService.GetOneBookByID(id, true);
+                bookPatch.ApplyTo(bookDto);
+                _manager.BookService.UpdateOneBook(id, new BookDtoForUpdate{
+                    BookID=bookDto.BookID,
+                    Title=bookDto.Title,
+                    Price=bookDto.Price,
+                }, true);
                 return NoContent();
         }
     }

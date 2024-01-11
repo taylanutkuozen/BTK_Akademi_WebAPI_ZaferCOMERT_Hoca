@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 namespace Entities.DataTransferObjects
 {
-    public record BookDtoForUpdate(int BookID,string Title, decimal Price);
+    public record BookDtoForUpdate: BookDtoForManipulation
+    {
+        [Required]
+        public int BookID { get; set; }
+    }
     /*{
         /*public int BookID { get; init; }
         public string TitleDto { get; init; }

@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Entities.DataTransferObjects
 {
-    /*[Serializable] açık yani {get;set;} olarak tanımladık property'leri BookDtoForUpdate aksine*/
+    /*[Serializable] açık olması için {get;set;} olarak tanımladık property'leri*/
     public record BookDto
     {
-        public int BookID { get; set; }
-        public string Title { get; set; }
-        public decimal Price { get; set; }
+        public int BookID { get; init; }
+        public string Title { get; init; }
+        public decimal Price { get; init; }
     }
 }
