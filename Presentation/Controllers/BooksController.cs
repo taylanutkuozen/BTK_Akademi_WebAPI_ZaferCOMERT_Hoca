@@ -37,6 +37,10 @@ namespace Presentation.Controllers
         {
                 if (bookDto is null)
                     return BadRequest();//400
+                if(!ModelState.IsValid)
+                {
+                return UnprocessableEntity(ModelState);
+                }
                 var book=_manager.BookService.CreateOneBook(bookDto);
                 return StatusCode(201, book); 
             /*CreatedAtRoute() bu metotla insert iþlemi yaparsak StatusCode yerine, response header'ýna location bilgisi koyabiliriz. Url'ýna eriþebiliriz.*/
@@ -46,14 +50,11 @@ namespace Presentation.Controllers
         {
                 if (bookDto is null)
                     return BadRequest();//400
-                //check book?
-                var entity = _manager.BookService.GetOneBookByID(id, true);
-                /*Id'ler tutuyor mu?
-                if (id != book.BookID)
+                if(!ModelState.IsValid)
                 {
-                    return BadRequest();
-                }*/
-                _manager.BookService.UpdateOneBook(id, bookDto, true);
+                    return UnprocessableEntity(ModelState);
+                }
+                _manager.BookService.UpdateOneBook(id, bookDto, false);
                 return NoContent();//204
         }
         [HttpDelete("{id:int}")]
@@ -63,16 +64,17 @@ namespace Presentation.Controllers
                 return NoContent();
         }
         [HttpPatch("{id:int}")]
-        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDto> bookPatch)
+        public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
+            if (bookPatch is null)
+                return BadRequest();
                 //check entity
-                var bookDto = _manager.BookService.GetOneBookByID(id, true);
-                bookPatch.ApplyTo(bookDto);
-                _manager.BookService.UpdateOneBook(id, new BookDtoForUpdate{
-                    BookID=bookDto.BookID,
-                    Title=bookDto.Title,
-                    Price=bookDto.Price,
-                }, true);
+            var result = _manager.BookService.GetOneBookForPatch(id, false);
+            bookPatch.ApplyTo(result.bookDtoForUpdate, ModelState);
+            TryValidateModel(result.bookDtoForUpdate);
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+            _manager.BookService.SaveChangesForPatch(result.bookDtoForUpdate, result.book);
                 return NoContent();
         }
     }

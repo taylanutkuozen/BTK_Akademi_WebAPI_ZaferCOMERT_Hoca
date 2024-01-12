@@ -56,7 +56,9 @@ Client 2 (Accept:application/xml)
 Client n (Accept:application/json)
 **Postman'dan request yaptığımızda Header'da Accept parametresinde */* bu ifade var ise=API pazarlığa kapalı demektir.
 -----------------------------------
-[ApiController]-Configure<ApiBehaviorOptions>(SuppressModelStateInvalidFilter,SuppressInferBindingSourcesForParameters,SuppressConsumeConstraintForFormFileParameters,SuppressMapClientErrors)-ModelState-422 Unprocessable Entity-Rerun Validation-Built in Attributes-Custom Attributes-IValidationObject
+[ApiController]=Controller'a bazı davranışsal özellikler kazandırmış oluyoruz-Configure<ApiBehaviorOptions>("SuppressModelStateInvalidFilter=bunu kullandık"
+,SuppressInferBindingSourcesForParameters,SuppressConsumeConstraintForFormFileParameters,SuppressMapClientErrors)
+-ModelState-422 Unprocessable Entity-Rerun Validation-Built in Attributes-Custom Attributes-IValidationObject
 [ApiController]=Attribute routing, HTTP 400, Binding source parameter inference, Multi/part-data request inference, Problem details for error status code
 ControllerBase sağladığı bazı özellikler : BadRequest(400), NotFound(404), PhysicalFile(Bir dosya döner), TryUpdateModelAsync(Model Binding çağırır), TryValidateModel (Model Doğrulama çağırır)
 Microsoft.AspNetCore.Mvc namespace bazı Attribute ifadeleri sağlar : [Route]=Bir controller veya bir action için URL desen belirlemek, [Bind]=Model Binding içermek için ön ek ve özelliklleri belirlemek [HttpGet]=Http Get action fiilini destekler [Consumes]=Action'ları kabul etmek için data type'ları belirler, [Produces]=Action'ların return'lerinin data type'larını belirler.

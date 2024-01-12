@@ -8,7 +8,8 @@ namespace WebAPI.Utilities.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<BookDtoForUpdate, Book>();
+            CreateMap<BookDtoForUpdate, Book>().ReverseMap();
+            /*ReverseMap ile source'tan destination'a ve destination'dan source'a map işlemi gerçekleşir.*/
             CreateMap<Book, BookDto>();
             CreateMap<BookDtoForInsertion, Book>();
         }
