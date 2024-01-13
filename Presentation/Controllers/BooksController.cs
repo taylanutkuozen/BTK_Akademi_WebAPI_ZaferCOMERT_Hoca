@@ -3,6 +3,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Presentation.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
+    /*Action bazlý deðil controller bazlý*/
     [ApiController]
     [Route("api/books")]
     public class BooksController : ControllerBase
@@ -32,19 +35,16 @@ namespace Presentation.Controllers
             var book = await _manager.BookService.GetOneBookByIDAsync(id, false);
             return Ok(book);
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
-                if (bookDto is null)
-                    return BadRequest();//400
-                if(!ModelState.IsValid)
-                {
-                return UnprocessableEntity(ModelState);
-                }
                 var book=await _manager.BookService.CreateOneBookAsync(bookDto);
                 return StatusCode(201, book); 
             /*CreatedAtRoute() bu metotla insert iþlemi yaparsak StatusCode yerine, response header'ýna location bilgisi koyabiliriz. Url'ýna eriþebiliriz.*/
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]//, Order =1)]
+        /*Order=1 önce validation yap. order=2 için önce order'1 gerçekleþsin sonra log atmalý sistem. Order öncelik sýrasý gibi*/
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
         {

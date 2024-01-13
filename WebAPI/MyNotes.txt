@@ -87,3 +87,21 @@ await=Sonuçların asenkron operasyondan çıkartılmasını sağlar.
 		await anahtar kelimesinin kullanılması zorunlu değildir.
 		await anahtar kelimesi yalnızca bir kez kullanılmak zorunda da değildir.(asenkron çalışma içerisinde birden fazla kez kullanılabilir.)
 metot adının sonuna Async getireceğiz. metot return type Task<T> olacak. ve metot return type öncesinde async anahtar kelimesini kullanacağız. ve son olarak kod içerisinde await kullanacağız(örnek olarak return yerine)
+--------------
+Action Filter Implementation-Scope of Action Filters-Order of Invocation-Validation with Action Filters-Logging with Action Filters-Refactoring Presentation and Service Layers
+ActionFilter=Action Filter bir Controller ya da Controller içindeki Action yapısına uygulanan ve bu yolla ilgili yapının düzenlenmesine olanak sağlayan bir attribute olarak ifade edilebilir.
+	İlgili action çalışmadan önce veya çalıştıktan sonra bazı kodları modifiye etmemizi veya düzenlememizi sağlar.
+	Autherization filter-Resource filters-Action filters-Exception filters-Result filters
+ IActionFilter-IAsyncActionFilter-ActionFilterAttribute
+ Global(Register in AddControllers);Controller Level-Action Level(Register-IoC Service Type)
+-------
+Scope
+OnActionExecuting from the Global filter
+	OnActionExecuting from the Controller filter
+		OnActionExecuting from the Action filter
+			Action method execution
+		OnActionExecuting from the Action filter
+	OnActionExecuting from the Controller filter
+OnActionExecuting from the Global filter
+------
+Debug-->Windows-->Immediate
