@@ -65,3 +65,25 @@ Microsoft.AspNetCore.Mvc namespace bazı Attribute ifadeleri sağlar : [Route]=B
 [ProducesResponseType(StatusCodes.Status201Created)]=Action üzerinde sonuç olarak dönecek statü kodunu Attribute olarak verir.
 [FromBody]=Request Body, [FromForm]=Request Body sindeki form verisi, [FromHeader]=Request Header, [FromQuery]=Request query string parameter, [FromRoute]=Route data from the current request [FromServices]=Action parametreleri olarak request servisi koda yerleştirmek
 Validation'lar=[ValidateNever], [EmailAddress], [Phone], [Range], [RegularExpression], [Required], [StringLength]
+-------------------------
+Asenkron programlama-async,await ve Task Keywords-return types-async code uygulaması-controller düzenlemesi
+Asynchronous Programming Model(APM);Event-based Asynchronous Pattern(EAP);Task-based Asynchronous Pattern(TAP) {uygulamada odaklanılan}
+senkron ise thread içerisinde olur ve o thread numarası olur. Örnek Thread:29555 gibi
+bir istek geldi thread pool karşıladı thread oluşturdu sunucuya gidildi, sonra bir istek daha geldi aynı şekilde thread pool aldı thread oluşturdu sunucuya gidildi. diyelim thread pool doldu sonrasında gelen istekler(requestler) bekleyecektir.
+asenkronda ise thread pool aldı async request'i bir thread oluşturdu eş zamanda bir async request daha geldi thread pool bir öncekinin bitmesini beklemeden bir thread daha oluşturabilecektir. işlemler ayrı ayrı thread'ler üzerinde dönebilir. sistem kullanım zamanı ve kaynak kullanımı değişmez sadece asenkron'da bloklama süresi değişir.
+Single Thread= 3 tane görev var ise önce Task1 bitecek sonra Task2 ve en son Task3 bitecektir. (Her görev tek thread içerisinde sırasıyla çalıştırılır)
+MultiThread=Task1 bir tane thread içerisinde gerçekleşirken task2 ve task3 farklı threadler içerisinde gerçekleşebilir.(Her görev ayrı bir thread içerisinde çalışır, Görevlerin tamamlanması süreci birbirinden bağımsızdır. Zaman konusunda avantajlıyız.)
+Single Thread Async=Bir thread içerisindeki bir görev devam ederken diğer görevlerde çalışmaya devam eder ve görevler birbirlerini bloklar.(Bekleme süreleri-blocking. Temel düşünce blocking olduğu durumlarda başka bir görevin işlemleri yapılarak zamanın verimli kullanılmasına dayanır.)
+Task=.NET dünyasında asenkron programlama için thread pool kullanılıyor. 
+	Threadler thread pooldan çekilir. 
+	Çalıştırılan thread yapılarının yönetimi sağlanır. 
+	Bu noktada Task kullanılır. 
+	Task objesi temel olarak üstlendiği işleri thread pool üzerinden asenkron olarak çalıştırır. Task anahtar kelimesinin asenkron metot tanımlarken kullanılması gerektiğini ancak sonucu temsil etmediğini anlamak önemlidir.
+	Task içerisinde çok Status, IsCompleted, IsCanceled, IsFaulted gibi çok sayıda property barındırır.
+	Task ile biz operasyonun tamamlanıp tamamlanmadığını izleyebiliriz.
+await=Sonuçların asenkron operasyondan çıkartılmasını sağlar.
+		Operasyonun başarısını doğrular.
+		Zaman uyumsuz yöntemde kodun geri kalanını yürütmek için devamı sağlar.
+		await anahtar kelimesinin kullanılması zorunlu değildir.
+		await anahtar kelimesi yalnızca bir kez kullanılmak zorunda da değildir.(asenkron çalışma içerisinde birden fazla kez kullanılabilir.)
+metot adının sonuna Async getireceğiz. metot return type Task<T> olacak. ve metot return type öncesinde async anahtar kelimesini kullanacağız. ve son olarak kod içerisinde await kullanacağız(örnek olarak return yerine)

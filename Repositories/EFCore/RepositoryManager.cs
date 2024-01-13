@@ -17,9 +17,9 @@ namespace Repositories.EFCore
         }
         public IBookRepository Book => _bookRepository.Value;/*Nesne ancak ve ancak kullanıldığı anda new'lenecek, aksi durumda new'leme yapılmayacak.*/
         /*IoC kaydı tek bir sefer olması için*/
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

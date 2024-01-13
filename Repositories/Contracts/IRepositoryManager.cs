@@ -9,6 +9,6 @@ namespace Repositories.Contracts
     {
         /*UnitofWork*/
         IBookRepository Book { get; }
-        void Save();
+        Task SaveAsync(); /*void yerine yalın bir Task ifadesi gelir.*/
     }
 }
