@@ -105,3 +105,11 @@ OnActionExecuting from the Global filter
 OnActionExecuting from the Global filter
 ------
 Debug-->Windows-->Immediate
+-------
+Pagination,Paging implementation,Concrete query,Improving pagination,X-Pagination Header, Cors Yapılandırması
+*Paging API'dan sonuçların kısmi olarak alınmasıdır.
+*RESTful API tasarımı için önemli bir özelliktir.
+/books?pageNumber=2&pageSize=5
+-CurrentPage,TotalPage,PageSize,TotalCount,HasPrevious(CurrentPage>1),HasNext(CurrentPage<TotalPage)
+**MetaData=Sorgu ile ilgili bilgi vermek (HasPrevious,HasNext)
+**X-Pagination Header ifadesinin tüketilebilmesi, clientlar tarafından okunması için CorsConfigürasyon yapmak gereklidir.

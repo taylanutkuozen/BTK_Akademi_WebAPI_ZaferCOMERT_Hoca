@@ -27,5 +27,19 @@ namespace WebAPI.Extensions
             //IoC tarafından projede sağlanacaktır.
             services.AddSingleton<LogFilterAttribute>();
         }
+        public static void ConfigureCors(this IServiceCollection service)
+        {
+            service.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", 
+                    builder=>builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination")
+                );
+            });
+        }
+            /*(Cors)Cross origin resource share=Kökenler arası kaynak paylaşımı*/
     }
 }
