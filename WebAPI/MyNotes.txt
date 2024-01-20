@@ -113,3 +113,9 @@ Pagination,Paging implementation,Concrete query,Improving pagination,X-Paginatio
 -CurrentPage,TotalPage,PageSize,TotalCount,HasPrevious(CurrentPage>1),HasNext(CurrentPage<TotalPage)
 **MetaData=Sorgu ile ilgili bilgi vermek (HasPrevious,HasNext)
 **X-Pagination Header ifadesinin tüketilebilmesi, clientlar tarafından okunması için CorsConfigürasyon yapmak gereklidir.
+--------
+Filtering, Filtering Different from Searching, Filtering Implementation, Sending and Testing a Query
+Filtering=Bir takım kriterlere bağlı olarak sonuçların getirilmesini sağlayan bir mekanizmadır.
+/books?minPrice=20 örneği gibi query string ile çalışabiliriz.
+/books?maxPrice=300
+/books?minPrice=20&maxPrice=300
