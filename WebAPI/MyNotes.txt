@@ -119,3 +119,12 @@ Filtering=Bir takım kriterlere bağlı olarak sonuçların getirilmesini sağla
 /books?minPrice=20 örneği gibi query string ile çalışabiliriz.
 /books?maxPrice=300
 /books?minPrice=20&maxPrice=300
+------
+Searching, Searching Implementation, SearchTerm, Case Sensitivity, Repository Extensions
+Searching=Bir terim ya da anahtar değer yardımıyla uygulama içerisindeki en alakalı sonuçları döndürmek üzere uygulanan bir işlevdir.
+  -Tek bir kolon, birden fazla kolon, bir kaynak, birden fazla kaynak yapılabilir.
+/books?searchTerm=kara
+/books?searchTerm=Kara
+/books?searchTerm=KARA
+/books?searchTerm=kARa
+*Lucene.net--> library
