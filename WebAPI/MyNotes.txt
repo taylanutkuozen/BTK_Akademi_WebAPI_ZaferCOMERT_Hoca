@@ -128,3 +128,10 @@ Searching=Bir terim ya da anahtar değer yardımıyla uygulama içerisindeki en 
 /books?searchTerm=KARA
 /books?searchTerm=kARa
 *Lucene.net--> library
+-----------------
+Sorting, Sorting Implementation, Query Strings, System.Linq.Dynamic.Core, Order Query Builder, Repository Extensions
+Sorting= Query String parametreleri yardımıyla tercih edilen bir yolla sonuçların sıralanması işlevidir.
+/books?orderBy=title
+/books?orderBy=title desc
+/books?orderBy=price
+/books?orderBy=price desc

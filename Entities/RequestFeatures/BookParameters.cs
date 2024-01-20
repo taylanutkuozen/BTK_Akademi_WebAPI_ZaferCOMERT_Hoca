@@ -6,5 +6,9 @@
         public uint MaxPrice { get; set; } = 350;
         public bool ValidPriceRange => MaxPrice > MinPrice;
         public string? SearchTerm { get; set; } /*string? boşta olabilir anlamına gelmektedir.*/
+        public BookParameters()
+        {
+            OrderBy = "BookID";
+        }
     }
 }
