@@ -28,24 +28,7 @@ namespace Repositories.EFCore.Extensions
         {
             if (string.IsNullOrEmpty(orderByQueryString))
                 return books.OrderBy(b => b.BookID);
-            var orderParams = orderByQueryString.Trim().Split(',');
-            var propertyInfos = typeof(Book)
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance);/*Reflection*/
-            var orderQueryBuilder = new StringBuilder();
-            /*title ascending, price descending, id ascending[,]*/
-            foreach ( var param in orderParams )
-            {
-                if (string.IsNullOrWhiteSpace(param))
-                    continue;
-                var propertyFromQueryName = param.Split(' ')[0]; 
-                /*books?orderBy=title,price desc, id asc*/
-                var objectProperty = propertyInfos.FirstOrDefault(pi => pi.Name.Equals(propertyFromQueryName, StringComparison.InvariantCultureIgnoreCase));
-                if (objectProperty is null)
-                    continue;
-                var direction = param.EndsWith(" desc") ? "descending" : "ascending";
-                orderQueryBuilder.Append($"{objectProperty.Name.ToString()}  {direction},");
-            }
-            var orderQuery = orderQueryBuilder.ToString().TrimEnd(',',' ');
+            var orderQuery = OrderQueryBuilder.CreateOrderQuery<Book>(orderByQueryString);
             if (orderQuery is null)
                 return books.OrderBy(b => b.BookID);
             return books.OrderBy(orderQuery);
