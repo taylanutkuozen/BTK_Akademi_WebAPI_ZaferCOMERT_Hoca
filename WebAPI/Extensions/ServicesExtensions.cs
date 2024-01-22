@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.DataTransferObjects;
+using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
 using Repositories.EFCore;
@@ -40,6 +41,10 @@ namespace WebAPI.Extensions
                 );
             });
         }
-            /*(Cors)Cross origin resource share=Kökenler arası kaynak paylaşımı*/
+        /*(Cors)Cross origin resource share=Kökenler arası kaynak paylaşımı*/
+        public static void ConfigureDataShaper(this IServiceCollection services)
+        {
+            services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
+        }
     }
 }

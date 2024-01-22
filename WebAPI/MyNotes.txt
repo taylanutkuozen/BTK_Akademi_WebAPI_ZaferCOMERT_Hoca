@@ -135,3 +135,10 @@ Sorting= Query String parametreleri yardımıyla tercih edilen bir yolla sonuçl
 /books?orderBy=title desc
 /books?orderBy=price
 /books?orderBy=price desc
+---------
+Data Shaping, Dynamic Typing, Reflection, PropertyInfo, Data Shaper Implementation, Service Register
+Data Shaping= API tüketicisinin, sorgu dizesi aracılığıyla talep ettiği nesnenin alanlarını seçerek sonuç setini şekillendirmesini sağlar.
+/books?fields=id
+/books?fields=id, title
+/books?fields=id, title, price
+---------
