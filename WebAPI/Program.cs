@@ -17,7 +17,7 @@ builder.Services.AddControllers(config =>
             /*Bir request'i kabul edip etmediðimizi client ile paylaþmak*/
         })
     .AddCustomCsvFormatter()
-    .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir*/
+    .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir. ExpandoObject kendi kuralý ile runtime'da üretiyor.*/
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     /*PresentationLayer tarafýndan entegre edildi. bu kod ile Controller yapýsýnýn bu projede çözülebilmesine olanak saðlanmýþ olundu*/
     .AddNewtonsoftJson();
