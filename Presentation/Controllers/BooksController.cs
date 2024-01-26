@@ -26,6 +26,7 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameter)
         {
                 var pagedResult =await _manager

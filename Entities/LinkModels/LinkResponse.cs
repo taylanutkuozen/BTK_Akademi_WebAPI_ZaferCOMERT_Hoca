@@ -10,11 +10,11 @@ namespace Entities.LinkModels
     {
         public bool HasLinks { get; set; }
         public List<Entity> ShapedEntities { get; set; }
-        public LinkCollectionWrapper<Link> LinkedEntities { get; set; }
+        public LinkCollectionWrapper<Entity> LinkedEntities { get; set; }
         public LinkResponse()
         {
             ShapedEntities= new List<Entity>();
-            LinkedEntities = new LinkCollectionWrapper<Link>();
+            LinkedEntities = new LinkCollectionWrapper<Entity>();
         }
     }
 }
