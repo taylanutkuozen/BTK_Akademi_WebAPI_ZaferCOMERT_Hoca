@@ -38,14 +38,37 @@ namespace Services
                 /*shapedBooks-->bir varlığı temsil ediyor{List<Entity>}.Entity gidip baktığımızda bir dictionary olduğunu görebiliriz.*/
             }
             var bookCollection = new LinkCollectionWrapper<Entity>(shapedBooks);
+            CreateForBooks(httpcontext, bookCollection);
             return new LinkResponse { HasLinks = true, LinkedEntities = bookCollection };
+        }
+        private LinkCollectionWrapper<Entity> CreateForBooks(HttpContext httpContext,LinkCollectionWrapper<Entity> bookCollectionWrapper)
+        {
+            bookCollectionWrapper.Links
+                .Add
+                (new Link() 
+                {
+                    Href = $"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}",
+                    Relation="self",
+                    Method="GET"
+                });
+            return bookCollectionWrapper;
         }
         private List<Link> CreateForBook(HttpContext httpcontext, BookDto bookDto, string fields)
         {
             var links = new List<Link>()
             {
-                new Link("a1","b1","c1"),
-                new Link("a2","b2","c2")
+                new Link()
+                {
+                    Href=$"/api/{httpcontext.GetRouteData().Values["controller"].ToString().ToLower()}"+ $"/{bookDto.BookID}",
+                    Relation="self",
+                    Method="GET"
+                }, /*GetRoute metodu ile controller bilgisini alabiliyoruz.*/
+                new Link()
+                {
+                    Href=$"/api/{httpcontext.GetRouteData().Values["controller"].ToString().ToLower()}",
+                    Relation="create",
+                    Method="POST"
+                }
             };
             return links;
         }

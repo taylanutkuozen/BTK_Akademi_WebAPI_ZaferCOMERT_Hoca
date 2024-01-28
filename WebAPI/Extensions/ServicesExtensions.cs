@@ -54,19 +54,19 @@ namespace WebAPI.Extensions
             services.Configure<MvcOptions>(config =>
             {
                 var systemJsonOutputFormatter = config.OutputFormatters
-                .OfType<SystemTextJsonInputFormatter>()?.FirstOrDefault();
-                if(systemJsonOutputFormatter is not null)
+                .OfType<SystemTextJsonOutputFormatter>()?.FirstOrDefault();
+                if (systemJsonOutputFormatter is not null)
                 {
                     systemJsonOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.btkakademi.hateoas+json");
-                    var xmlOutputFormatters = config.OutputFormatters
-                    .OfType<XmlDataContractSerializerInputFormatter>()?.FirstOrDefault();
-                    if(xmlOutputFormatters is not null)
-                    {
-                        xmlOutputFormatters.SupportedMediaTypes
-                        .Add("application/vnd.btkakademi.hateoas+xml");
-                    }
                 }
+                var xmlOutputFormatters = config.OutputFormatters
+                .OfType<XmlDataContractSerializerOutputFormatter>()?.FirstOrDefault();
+                if(xmlOutputFormatters is not null)
+                 {
+                    xmlOutputFormatters.SupportedMediaTypes
+                   .Add("application/vnd.btkakademi.hateoas+xml");
+                 }
             });
         }
     }

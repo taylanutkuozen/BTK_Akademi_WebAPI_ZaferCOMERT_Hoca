@@ -143,4 +143,4 @@ Data Shaping= API tüketicisinin, sorgu dizesi aracılığıyla talep ettiği ne
 /books?fields=id, title, price
 ---------
 HATEOAS(Hypermedia as the Engine of Application State)=Hyper media özelliğini API'ye kazandırmak.
-HATEOAS,Link,LinkResourceBase,LinkCollectionWrap,Entity,ShapedEntity,DataShaper,LinkParameters,LinkResponse,ServiceUpdate,API Testing.
+HATEOAS,Link,LinkResourceBase,LinkCollectionWrap,Entity,ShapedEntity,DataShaper,LinkParameters,LinkResponse,AddCustomMediaTypes,ServiceUpdate,API Testing.

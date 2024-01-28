@@ -67,7 +67,7 @@ namespace Services
                 var objectPropertyValue = property.GetValue(entity);
                 shapedObject.Entity.TryAdd(property.Name, objectPropertyValue);
             }
-            var objectProperty = entity.GetType().GetProperty("ID");
+            var objectProperty = entity.GetType().GetProperty("BookID");
             shapedObject.ID = (int)objectProperty.GetValue(entity);
             return shapedObject;
         }

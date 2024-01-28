@@ -17,11 +17,11 @@ builder.Services.AddControllers(config =>
             config.ReturnHttpNotAcceptable = true;
             /*Bir request'i kabul edip etmediðimizi client ile paylaþmak*/
         })
-    .AddCustomCsvFormatter()
     .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir. ExpandoObject kendi kuralý ile runtime'da üretiyor.*/
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
+    .AddCustomCsvFormatter()
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
     /*PresentationLayer tarafýndan entegre edildi. bu kod ile Controller yapýsýnýn bu projede çözülebilmesine olanak saðlanmýþ olundu*/
-    .AddNewtonsoftJson();
+    //.AddNewtonsoftJson();
 builder.Services.AddScoped<ValidationFilterAttribute>(); //IoC tarafýndan projede saðlanacaktýr.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

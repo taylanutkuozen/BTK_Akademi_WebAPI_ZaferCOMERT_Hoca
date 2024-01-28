@@ -8,7 +8,7 @@ namespace Entities.LinkModels
     public class Link
     {
         public string? Href { get; set; }
-        public string? Relation { get; set; }
+        public string? Relation { get; set; }/*Create işlemimi kendini tanımlayan bir ifademi onu belirtiyor relation*/
         public string? Method { get; set; }
         public Link()
         {
@@ -22,3 +22,4 @@ namespace Entities.LinkModels
         }
     }
 }
+/*books*/

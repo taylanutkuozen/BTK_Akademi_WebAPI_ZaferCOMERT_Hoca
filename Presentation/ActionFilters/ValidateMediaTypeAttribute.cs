@@ -22,10 +22,10 @@ namespace Presentation.ActionFilters
                 return;
             }
             var mediaType = context.HttpContext
-                .Response
+                .Request
                 .Headers["Accept"]
                 .FirstOrDefault();/*Accept artık var ancak desteklenen formatta mı değil mi*/
-            if(MediaTypeHeaderValue.TryParse(mediaType,out MediaTypeHeaderValue? outMediaType))
+            if(!MediaTypeHeaderValue.TryParse(mediaType,out MediaTypeHeaderValue? outMediaType))
             {
                 /*out parametre modifier. Hangi parametreyi metoda göndermiş olursanız olun
                  outMediaType ifadesinin değeri metot içerisinde belirlenir*/
