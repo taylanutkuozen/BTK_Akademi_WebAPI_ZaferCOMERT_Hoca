@@ -147,3 +147,7 @@ HATEOAS,Link,LinkResourceBase,LinkCollectionWrap,Entity,ShapedEntity,DataShaper,
 ---------
 Options Http Requests=Erişilebilir olan seçenekler, Head Http Requests=Body olmadan meta bilgileri almak için kullanılır.
 Head=Get ile aynı şekilde çalışıyor ancak aradaki fark response'taki body kısmı yok. Gövde olmadan doğrudan meta ifadeleri ile server iletişim kurulabilmektedir.
+-----------
+Root Documentation=Kullanıcılar ile etkileşim ve kullanıcıyı yönlendirme.
+Root Controller, Root Document, CustomMediaType Configuration, API Testing
+---------

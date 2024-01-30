@@ -26,7 +26,7 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpHead]
-        [HttpGet]
+        [HttpGet(Name ="GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameter)
         {
@@ -50,7 +50,7 @@ namespace Presentation.Controllers
             return Ok(book);
         }
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [HttpPost]
+        [HttpPost(Name ="CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
                 var book=await _manager.BookService.CreateOneBookAsync(bookDto);
