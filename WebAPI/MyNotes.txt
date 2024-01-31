@@ -151,3 +151,5 @@ Head=Get ile aynı şekilde çalışıyor ancak aradaki fark response'taki body 
 Root Documentation=Kullanıcılar ile etkileşim ve kullanıcıyı yönlendirme.
 Root Controller, Root Document, CustomMediaType Configuration, API Testing
 ---------
+Versioning
+Microsoft.AspNetCore.Mvc.Versioning, Configure Versioning,Books Kaynağı için Versiyonlama Örneği,URL ile Versiyonlama, Header ile Versiyonlanma, Deprecating Versions, Using Conventions

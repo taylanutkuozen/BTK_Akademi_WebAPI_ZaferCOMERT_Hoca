@@ -49,6 +49,11 @@ namespace Services
             var links = _bookLinks.TryGenerateLinks(booksDto, linkParameters.BookParameters.Fields, linkParameters.HttpContext);
             return (linkResponse: links, metaData:booksWithMetaData.MetaData);
         }
+        public async Task<List<Book>> GetAllBooksAsync(bool trackChanges)
+        {
+           var books=await _manager.Book.GetAllBooksAsync(trackChanges);
+           return books;
+        }
         public async Task<BookDto> GetOneBookByIDAsync(int id, bool trackChanges)
         {
             var book = await GetOneBookByIDAndCheckExists(id, trackChanges);

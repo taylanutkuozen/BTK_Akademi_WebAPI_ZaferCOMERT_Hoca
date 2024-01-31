@@ -73,5 +73,17 @@ namespace WebAPI.Extensions
                  }
             });
         }
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(opt=>
+            {
+                opt.ReportApiVersions = true;
+                /*Api versiyon bilgisi response header kısmına ekledik*/
+                opt.AssumeDefaultVersionWhenUnspecified = true;
+                /*Eğer kullanıcı herhangi bir versiyon talep etmez Api default version dönecek*/
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                /*Default ne olduğunu söylediğimiz parametre*/
+            });
+        }
     }
 }

@@ -14,10 +14,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 namespace Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [ServiceFilter(typeof(LogFilterAttribute))]
     /*Action bazlý deðil controller bazlý*/
     [ApiController]
-    [Route("api/books")]
+    [Route("api/{v:apiversion}/books")]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
