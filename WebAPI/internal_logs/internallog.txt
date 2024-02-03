@@ -382,3 +382,27 @@
 2024-02-03 09:06:51.6749 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
 2024-02-03 09:06:51.7052 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
 2024-02-03 09:06:51.7437 Info Configuration initialized.
+2024-02-03 09:09:40.2566 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-03 09:09:40.3092 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-03 09:09:40.3386 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-03 09:09:40.3728 Info Configuration initialized.
+2024-02-03 09:12:30.9390 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-03 09:12:31.0036 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-03 09:12:31.0346 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-03 09:12:31.0758 Info Configuration initialized.
+2024-02-03 09:37:40.2029 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-03 09:37:40.2667 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-03 09:37:40.3102 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-03 09:37:40.3464 Info Configuration initialized.
+2024-02-03 09:43:22.9423 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-03 09:43:23.0122 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-03 09:43:23.0444 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-03 09:43:23.0819 Info Configuration initialized.
+2024-02-03 09:45:11.2376 Info AppDomain Shutting down. LogFactory closing...
+2024-02-03 09:45:11.2604 Info LogFactory has been closed.
+2024-02-03 09:45:33.7839 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-03 09:45:33.8542 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-03 09:45:33.8978 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-03 09:45:33.9375 Info Configuration initialized.
+2024-02-03 09:46:03.1378 Info AppDomain Shutting down. LogFactory closing...
+2024-02-03 09:46:03.1378 Info LogFactory has been closed.

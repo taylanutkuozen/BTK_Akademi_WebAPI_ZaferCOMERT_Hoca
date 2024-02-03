@@ -2,6 +2,7 @@ using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
@@ -19,7 +20,9 @@ namespace Presentation.Controllers
     /*Action bazlý deðil controller bazlý*/
     [ApiController]
     [Route("api/books")]
-    [ResponseCache(CacheProfileName = "5mins")]/*Tüm requestler için Cache'leme iþlemi. Program.cs'deki controller config içerisindeki ismi. ExpirationModel*/
+    //[ResponseCache(CacheProfileName = "5mins")]/*Tüm requestler için Cache'leme iþlemi. Program.cs'deki controller config içerisindeki ismi. ExpirationModel*/
+    //[HttpCacheExpiration(CacheLocation =CacheLocation.Public,MaxAge =80)]
+    /*Kaynaða daha yakýn bir config ifadesi olduðu için ServiceExtension deðil yukarýdaki komut çalýþacaktýr.*/
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -30,7 +33,7 @@ namespace Presentation.Controllers
         [HttpHead]
         [HttpGet(Name ="GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
-        [ResponseCache(Duration =60)]/*Cachable özelliði kazandý. Metota daha yakýn olduðu için geçerli olacak. Class baþýndaki Cache Profile bu metot üzerinde iþlem yapamayacaktýr. ExpirationModel*/
+        //[ResponseCache(Duration =60)]/*Cachable özelliði kazandý. Metota daha yakýn olduðu için geçerli olacak. Class baþýndaki Cache Profile bu metot üzerinde iþlem yapamayacaktýr. ExpirationModel*/
         public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameter)
         {
             var linkParameters = new LinkParameters()

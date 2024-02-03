@@ -94,6 +94,19 @@ namespace WebAPI.Extensions
             });
         }
         public static void ConfigureResponseCaching(this IServiceCollection services) => services.AddResponseCaching();/*IoC kaydı*/
-        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) => services.AddHttpCacheHeaders();
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) => services.AddHttpCacheHeaders
+            (
+            expirationOpt =>
+            {
+                expirationOpt.MaxAge = 90;
+                expirationOpt.CacheLocation = Marvin.Cache.Headers.CacheLocation.Public;
+                /*Headers içerisindeki bilgileri değiştirmiş oluyoruz. Api yeniden kaynak oluşturduğunda Cache'ten cevap vermemeye başladı.*/
+            },
+            validationOpt=>
+            {
+                validationOpt.MustRevalidate = false;/*Yeniden validate olma zorunluluğu olmasın. true yaparsak Headers içerisinde Cache-Control'de must-revalidate görülecektir.*/
+            }
+            );
+        /*ValidationModel için kullanıyoruz.*/
     }
 }

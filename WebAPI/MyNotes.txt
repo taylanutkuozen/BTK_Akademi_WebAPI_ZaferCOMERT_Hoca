@@ -154,8 +154,8 @@ Root Controller, Root Document, CustomMediaType Configuration, API Testing
 Versioning
 Microsoft.AspNetCore.Mvc.Versioning, Configure Versioning,Books Kaynağı için Versiyonlama Örneği,URL ile Versiyonlama, Header ile Versiyonlanma, Deprecating Versions, Using Conventions
 ------------
-Caching=Bir api hem kalitesini hem de performansı ön bellek önem taşımaktadır.
-About Caching (Cache Types, ResponseCache Attribute), Adding Cache Headers, Adding Cache Store(Service Registration, Cache-Control Age, ResponseCacheAttribute, CacheProfile), Expiration Model, Validation Model, Supporting Validation(Marvin.Cache.Headers, AddHttpCacheHeaders, Last Modified ETag Validators, HttpCacheExpiration, HttpCacheValidation)
+Caching=Bir api hem kalitesini hem de performansını arttırmak için ön bellek(caching mekanizması) önem taşımaktadır.
+About Caching (Cache Types, ResponseCache Attribute), Adding Cache Headers(Middleware), Adding Cache Store(Service Registration, Cache-Control Age, ResponseCacheAttribute, CacheProfile), Expiration Model, Validation Model, Supporting Validation(Marvin.Cache.Headers, AddHttpCacheHeaders, Last Modified ETag Validators, HttpCacheExpiration, HttpCacheValidation)
 Caching=Gerekli request'lerin ayırt edilmesi.
 Şematik:
 Client-->(Request)-->Cache-->(request)-->API(Server)
@@ -164,7 +164,7 @@ Expiration Model:
 Client-->(Request)-->Cache /*Burada Cache gidip serverdan veriyi almıştır.
 Client<--(200 OK{Cache-Control:max-age:60[60 saniye]})<--Cache
 /*60 saniye boyunca gelen request'ler cache'den response alır. 60 saniye sonunda verinin fresh olup olmadığı belirsiz olduğu için cache server'dan response alır.
-Store İhtiyacı =
+Store İhtiyacı =(Cache Types)
 Client Cache=Burada cache'lenmiş olan kaynak veya response paylaşılmaz. Bir client bize geldi ilk talep ise API onun için bir kaynak üretir ve yanıtlar. Daha sonra geçerli olduğu süre zarfı içerisinde private sadece o client browser'ında caching mekanizmasında o caching saklanır.
 Gateway Cache=Server tarafında yer alır ve paylaşılır. Client 1, Client 2, Client 3 var Client N kadar gidebilir. Bir client için kaynak üretildiğinde o kaynağı diğer client'lara verebiliriz.Birden fazla istemci tarafından Gateway Cache kullanılabiliyor.
 Proxy Cache=Proxy'de tutabiliyoruz. Store alanı ne private'tır yani ne browser içerisinde ne de server tarafında sağlanır. Cache işlemi ağ üzerinde yapılır.
@@ -182,3 +182,5 @@ Headers içerisinde Cache-Control ifadesi = Cachable olduğunu gösterir.
 Headers içerisindeki Age söz konusu kaynağın Cache içerisinde ne kadar süredir durduğunu söylemektedir.
 Postman'de settings kontrol et."Send no-cache header" OFF olmalı.
 Cache Profile=Elimizde birden fazla kaynak var. Birden fazla kaynak için ortak olan bir caching mekanizmasıdır. Tanımı tek yerde yapıp farklı farklı kaynaklar için kullanabiliriz.
+Validation için kütüphaneler :
+Varnish, Apache Traffic Server, Squid, CDN
