@@ -16,6 +16,8 @@ builder.Services.AddControllers(config =>
             /*bu ifade bir flag ve bu flag içerik pazarlýðý için açýðýz*/
             config.ReturnHttpNotAcceptable = true;
             /*Bir request'i kabul edip etmediðimizi client ile paylaþmak*/
+            config.CacheProfiles.Add("5mins", new CacheProfile() { Duration=300});
+            /*Ýlk parametre vereceðimiz isim, ikinci parametre bir nesne üretip ona duration vermiþ olduk.Duration saniye cinsinden.*/
         })
     .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir. ExpandoObject kendi kuralý ile runtime'da üretiyor.*/
     .AddCustomCsvFormatter()
@@ -42,6 +44,8 @@ builder.Services.ConfigureDataShaper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IBookLinks, BookLinks>();
 builder.Services.ConfigureVersioning();
+builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureHttpCacheHeaders();
 var app = builder.Build();
 var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);
@@ -57,6 +61,9 @@ if(app.Environment.IsProduction())
 }
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+app.UseResponseCaching();
+/*Caching Store ifadesi için bu kod gereklidir. Cors'tan sonra caching ifadesi çaðrýlmalýdýr.*/
+app.UseHttpCacheHeaders();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

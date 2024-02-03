@@ -19,6 +19,7 @@ namespace Presentation.Controllers
     /*Action bazlý deðil controller bazlý*/
     [ApiController]
     [Route("api/books")]
+    [ResponseCache(CacheProfileName = "5mins")]/*Tüm requestler için Cache'leme iþlemi. Program.cs'deki controller config içerisindeki ismi. ExpirationModel*/
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -29,6 +30,7 @@ namespace Presentation.Controllers
         [HttpHead]
         [HttpGet(Name ="GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        [ResponseCache(Duration =60)]/*Cachable özelliði kazandý. Metota daha yakýn olduðu için geçerli olacak. Class baþýndaki Cache Profile bu metot üzerinde iþlem yapamayacaktýr. ExpirationModel*/
         public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameter)
         {
             var linkParameters = new LinkParameters()

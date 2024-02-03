@@ -93,5 +93,7 @@ namespace WebAPI.Extensions
                 /*Attribute yerine configure aşamasında version bilgileri ekledik.*/
             });
         }
+        public static void ConfigureResponseCaching(this IServiceCollection services) => services.AddResponseCaching();/*IoC kaydı*/
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) => services.AddHttpCacheHeaders();
     }
 }
