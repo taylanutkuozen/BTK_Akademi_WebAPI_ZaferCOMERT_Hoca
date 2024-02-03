@@ -184,3 +184,6 @@ Postman'de settings kontrol et."Send no-cache header" OFF olmalı.
 Cache Profile=Elimizde birden fazla kaynak var. Birden fazla kaynak için ortak olan bir caching mekanizmasıdır. Tanımı tek yerde yapıp farklı farklı kaynaklar için kullanabiliriz.
 Validation için kütüphaneler :
 Varnish, Apache Traffic Server, Squid, CDN
+------------------
+Rate Limit=Her API ihtiyaç duyar.
+AspNetCoreRateLimit kütüphanesi, Configuration (MemoryCache), X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset, 429 Too Many Requests
