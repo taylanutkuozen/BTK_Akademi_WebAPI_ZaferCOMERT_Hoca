@@ -187,3 +187,24 @@ Varnish, Apache Traffic Server, Squid, CDN
 ------------------
 Rate Limit=Her API ihtiyaç duyar.
 AspNetCoreRateLimit kütüphanesi, Configuration (MemoryCache), X-Rate-Limit-Limit, X-Rate-Limit-Remaining, X-Rate-Limit-Reset, 429 Too Many Requests
+---------------
+Authentication and Authorization
+Identity, User (IdentityUser) Model{Identity User=inheritance-Identity Role=olduğu gibi}, IdentityDbContext, Configure Identity, Adding Migrations, Role Configuration, Migration (Role Configuration), UserForRegistrationDto,IAuthenticationService,RegisterUser, IServiceManager, AuthenticationController, JSON Web Token(JWT), JWT Configuration, Protecting Endpoints, UserForAuthenticationDto, ValidateUser, CreateToken, Authenticate, Token in Use, Role-based Authorization, accessToken for Postman, Refresh Token
+Şematik:
+Client-->(api/authentication/login)-->Server
+Client<--(response{JSON Web Token[JWT=username+subject+user roles+expirationtime]})<--Server
+Client-->(request{Header[Authentication:Bearer Token]})-->Server
+Client<--(Response)<--Server
+Süreç:
+Client--(HTTP Post KullaniciAdi/Şifre doğrulaması)-->Server
+**Kullanıcı adı ve şifre doğru ise TOKEN verilir.
+Client<--(JWT TOKEN)--Server
+Client--(Sunucuya gönderilen requestlerde HEADER Authorization bölümünde TOKEN bilgisi eklenerek gönderilir.)-->Server
+**Token doğrulanır. Doğrulama geçersiz olduğunda ise 401 Status kodu ile cevap verilir.
+Client<--(Response)--Server
+Hatalı Süreç :
+Client--(base64\Request[body]\Header{Authorization})-->Server
+**Geçersiz talep
+Client<--(401 Unathorized/403 Forbidden ile dönüş olabilir)--Server
+**Kullanıcı adı ve şifre doğru ise yanıt verilir.
+Client<--(Response)--Server
