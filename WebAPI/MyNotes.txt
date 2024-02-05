@@ -208,3 +208,29 @@ Client--(base64\Request[body]\Header{Authorization})-->Server
 Client<--(401 Unathorized/403 Forbidden ile dönüş olabilir)--Server
 **Kullanıcı adı ve şifre doğru ise yanıt verilir.
 Client<--(Response)--Server
+--------
+Client--(api/authentication/login)-->Server /*Sunucu eğer elinde böyle bir kullanıcı varsa response verecek*/
+Client<--(JSON Web Token{JWT}[username,subject,user roles,useful information])--Server
+Client--(Request{Header[Authentication:Bearer Token-JWT için Bearer kullanılır.]})-->Server
+/*Token'ı Server yorumlayacak. token'ı server üretti mi? server token'ı yorumlayacak ona göre işlemler olacaktır.*/
+Client<--(Response)--Server
+Süreç:
+Client--(HTTP Post KullanıcıAdi/Şifre doğrulaması)-->Server
+**Kullanıcı adı ve şifre doğru ise TOKEN verilir.
+Client<--(JWT TOKEN)--Server
+Client--(Sunucuya gönderilen isteklerde HEADER Authorization bölümünde TOKEN bilgisi eklenerek gönderilir.)-->Server
+**Token doğrulanır. Doğrulama geçersiz ise 401 Status kodu ile cevap verilir.
+Client<--(Response)--Server
+------
+Client--(base64[Request*body*{Header/Authorization\}])-->Server
+**Geçersiz talep!
+Client<--(401 Unauthorized/403 Forbidden ile dönüş olabilir.)--Server
+**Kullanıcı adı ve şifre doğru ise yanıt verilir.
+Client<--(Response)--Server
+-----------
+Bir token temelde 3 tane parçadan oluşur. Her nokta parçaları ayırmak için kullanılır.
+eyJhbGci0iJIUzI1NiIsInR5cCI6IkpXVCJ9. (Token'ın Header'ı=Açık olan bilgiler. Algoritma bilgileri. Token type'ını tanımlar. Base64 formatında encode edilir. Kripted yapı yoktur. Base64 tarafında bir decoder ile çözülebilir. Çözüldüğü zaman={"alg[algoritma]":"HS256","typ[type]":"JWT"}).
+eyJzdWIiOiIxMjM0NTY30DkwIiwibmFtZSI6IkpvaG4gRG91IiwiaWF0IjoxNTE2MjM5MDIyfQ.(Token'ın Payload'ı. Hem kullanıcıyı hem anahtarı tanımlayan bilgilerle kuşatılır. Herhangi bir base64 ile çözülebileceği için hassas olan hiçbir bilgiyi eklememiz gereklidir. Token'a yerleştirmek istediğimiz bilgileri kapsayacaktır. Kullanıcının ismi, kullanıcının rolleri, token geçerlilik tarihi gibi bilgiler {"sub":"1234567890","name":"John Doe","iat":1516239022})
+XbPfbIHMI6arZ3Y922BhjWgQzWXcXNrz0ogtVhfEd2o(Token'ın signature'ı doğrulama amaçlı kullanılmaktadır. Gerçekten bunu bizim sunucumuz mu üretti. HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload).superSecertKey[Sunucumuz üretti mi?])secret base64 encoded. Geçerli bir token olup olmadığı konusunda signature kullanılacaktır.)
+---------
+appsettings.json içerisine IConfiguration içerisinde erişim sağlanmaktadır. builder.IConfiguration da erişim sağlayabilmektedir.

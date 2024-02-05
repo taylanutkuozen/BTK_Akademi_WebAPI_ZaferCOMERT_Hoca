@@ -12,6 +12,7 @@ namespace WebAPI.Utilities.AutoMapper
             /*ReverseMap ile source'tan destination'a ve destination'dan source'a map işlemi gerçekleşir.*/
             CreateMap<Book, BookDto>();
             CreateMap<BookDtoForInsertion, Book>();
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }

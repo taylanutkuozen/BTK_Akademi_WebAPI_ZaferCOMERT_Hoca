@@ -50,6 +50,8 @@ builder.Services.ConfigureHttpCacheHeaders();
 builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();/*Accessor ifadesi üzerinden çözümleme yapýlmasý gereklidir.*/
+builder.Services.AddAuthentication();/*User ve password kullanacaðýmýzý bildirmiþ olduk.*/
+builder.Services.ConfigureIdentity();
 var app = builder.Build();
 var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);
@@ -69,6 +71,7 @@ app.UseCors("CorsPolicy");
 app.UseResponseCaching();
 /*Caching Store ifadesi için bu kod gereklidir. Cors'tan sonra caching ifadesi çaðrýlmalýdýr.*/
 app.UseHttpCacheHeaders();
+app.UseAuthentication();/*Giriþ için user ve password doðrulama iþlemi yap*/
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

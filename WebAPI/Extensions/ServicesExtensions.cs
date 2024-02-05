@@ -1,5 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using Entities.DataTransferObjects;
+using Entities.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -128,6 +130,22 @@ namespace WebAPI.Extensions
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
             services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        }
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, IdentityRole>(opt=>
+            {
+                    opt.Password.RequireDigit = true;
+                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireUppercase = false;
+                    opt.Password.RequireNonAlphanumeric = false;
+                    opt.Password.RequiredLength = 6;
+
+                    opt.User.RequireUniqueEmail = true;
+            })
+               .AddEntityFrameworkStores<RepositoryContext>()
+               .AddDefaultTokenProviders();
+            /*User=IdentityUser*/
         }
     }
 }

@@ -416,3 +416,35 @@
 2024-02-03 17:03:15.7471 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
 2024-02-03 17:03:15.7861 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
 2024-02-03 17:03:15.8416 Info Configuration initialized.
+2024-02-05 20:20:37.2569 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 20:20:37.3166 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 20:20:37.3326 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 20:20:37.3558 Info Configuration initialized.
+2024-02-05 20:20:39.9372 Info AppDomain Shutting down. LogFactory closing...
+2024-02-05 20:20:39.9506 Info LogFactory has been closed.
+2024-02-05 20:26:14.9767 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 20:26:15.0010 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 20:26:15.0185 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 20:26:15.0403 Info Configuration initialized.
+2024-02-05 20:26:19.6269 Info AppDomain Shutting down. LogFactory closing...
+2024-02-05 20:26:19.6467 Info LogFactory has been closed.
+2024-02-05 20:37:27.9730 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 20:37:27.9947 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 20:37:28.0126 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 20:37:28.0321 Info Configuration initialized.
+2024-02-05 20:37:30.2042 Info AppDomain Shutting down. LogFactory closing...
+2024-02-05 20:37:30.2173 Info LogFactory has been closed.
+2024-02-05 20:39:26.2378 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 20:39:26.2608 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 20:39:26.2814 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 20:39:26.3058 Info Configuration initialized.
+2024-02-05 20:39:28.7360 Info AppDomain Shutting down. LogFactory closing...
+2024-02-05 20:39:28.7564 Info LogFactory has been closed.
+2024-02-05 21:42:21.3906 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 21:42:21.4460 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 21:42:21.4708 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 21:42:21.5068 Info Configuration initialized.
+2024-02-05 21:47:39.8436 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-02-05 21:47:39.9023 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-02-05 21:47:39.9247 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\ASUS\source\repos\bsStoreApp\WebAPI\nlog.config
+2024-02-05 21:47:39.9605 Info Configuration initialized.
