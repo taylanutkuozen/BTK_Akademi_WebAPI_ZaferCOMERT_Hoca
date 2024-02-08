@@ -1,6 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -12,6 +13,8 @@ using Repositories.Contracts;
 using Repositories.EFCore;
 using Services;
 using Services.Contracts;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace WebAPI.Extensions
 {
     public static class ServicesExtensions
@@ -146,6 +149,30 @@ namespace WebAPI.Extensions
                .AddEntityFrameworkStores<RepositoryContext>()
                .AddDefaultTokenProviders();
             /*User=IdentityUser*/
+        }
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["secretKey"];
+            services.AddAuthentication(opt=>
+            {
+                opt.DefaultAuthenticateScheme =JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;/*Authentication için default şemalar*/
+            }).AddJwtBearer(options=>
+                        options.TokenValidationParameters=new TokenValidationParameters
+                            {
+                                ValidateIssuer=true,/*Key'i kim üretti ise doğrula*/
+                                ValidateAudience=true,/*Audience=Geçerli bir alıcı mı değil mi doğrula*/
+                                ValidateLifetime=true,
+                                ValidateIssuerSigningKey=true,/*Anahtar için doğrulama*/
+                                ValidIssuer = jwtSettings["validIssuer"],
+                                ValidAudience = jwtSettings["validAudience"],
+                                IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                                /*İlgili Middleware kaydolma işlemi yapıyoruz.(IoC kaydı yaptık.) 
+                                 * Kullanılacak şemayı belirtiyoruz yani Token kullanacağız.
+                                 Son olarak Token'ı doğrulayacak parametreleri hazırladık.*/
+                            }
+                        );
         }
     }
 }

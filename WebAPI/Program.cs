@@ -50,8 +50,8 @@ builder.Services.ConfigureHttpCacheHeaders();
 builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();/*Accessor ifadesi üzerinden çözümleme yapýlmasý gereklidir.*/
-builder.Services.AddAuthentication();/*User ve password kullanacaðýmýzý bildirmiþ olduk.*/
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 var app = builder.Build();
 var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);
