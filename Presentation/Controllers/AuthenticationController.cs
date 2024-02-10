@@ -33,5 +33,23 @@ namespace Presentation.Controllers
             }
             return StatusCode(201);
         }
+        [HttpPost("login")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Authenticate([FromBody]UserForAuthenticationDto user)
+        {
+            if (!await _serviceManager.AuthenticationService.ValidateUser(user))
+            {
+                return Unauthorized();//401
+            }
+            var tokenDto = await _serviceManager.AuthenticationService.CreateToken(populateExpire : true);
+            return Ok(tokenDto);
+        }
+        [HttpPost("refresh")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Refresh([FromBody]TokenDto tokenDto)
+        {
+            var tokenDtoToReturn = await _serviceManager.AuthenticationService.RefreshToken(tokenDto);
+            return Ok(tokenDtoToReturn);
+        }
     }
 }

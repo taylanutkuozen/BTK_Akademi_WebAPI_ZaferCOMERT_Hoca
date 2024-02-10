@@ -234,3 +234,24 @@ eyJzdWIiOiIxMjM0NTY30DkwIiwibmFtZSI6IkpvaG4gRG91IiwiaWF0IjoxNTE2MjM5MDIyfQ.(Toke
 XbPfbIHMI6arZ3Y922BhjWgQzWXcXNrz0ogtVhfEd2o(Token'ın signature'ı doğrulama amaçlı kullanılmaktadır. Gerçekten bunu bizim sunucumuz mu üretti. HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload).superSecertKey[Sunucumuz üretti mi?])secret base64 encoded. Geçerli bir token olup olmadığı konusunda signature kullanılacaktır.)
 ---------
 appsettings.json içerisine IConfiguration içerisinde erişim sağlanmaktadır. builder.IConfiguration da erişim sağlayabilmektedir.
+--------------------
+RefreshToken
+Client---(Authentication)--->AuthenticationComponent(ServerSide)
+Client<---(AccessToken){Resource Endpoints}---AuthenticationComponent(ServerSide):Burada AccessToken ile beraber istemci korunan(protected) endpointlere request atabilecek.
+Bu işlemden sonra gerçekleşecek şemalar:
+Client---(AccessToken)--->Resource Endpoints
+Client<---(Protected Resource)---Resource Endpoints
+**Client bu şekilde istek atabilir taki AccessToken süresi dolana kadar.
+Client---(AccessToken)--->Resource Endpoints
+Client<---(AccessTokenExpired)---Resource Endpoints
+Client---(Authentication)--->AuthenticationComponent(ServerSide)
+Client<---(AccessToken)---AuthenticationComponent(ServerSide) //Yeni bir AccessToken alınmış oldu.
+*Refresh Token kullanılarak şematik:
+Client---(Authentication)--->AuthenticationComponent(ServerSide)
+Client<---(AccessToken){Resource Endpoints}---AuthenticationComponent(ServerSide)
+Client---(AccessToken)--->Resource Endpoints
+Client<---(Protected Resource)---Resource Endpoints
+Client---(AccessToken)--->Resource Endpoints
+Client<---(AccessTokenExpired)---Resource Endpoints
+Client---(RefreshToken)--->AuthenticationComponent(ServerSide) /*Client herhangi bir user parametresi olmayan bir token gönderiliyor ve bu Token'a RefreshToken diyoruz. Token'ı yenileyecek. Önceden hazırlanmış. */
+Client<---(AccessToken&RefreshToken)---AuthenticationComponent(ServerSide) /* Kullanıcı hiç süresi dolmamış gibi rahat bir şekilde korumalı kaynaklara erişim sağlayabiliyor. */

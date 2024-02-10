@@ -31,7 +31,7 @@ namespace Presentation.Controllers
         {
             _manager = manager;
         }
-        [Authorize]/*Ýlgili metodun korunacaðýný ifade ettik.*/
+        [Authorize]/*Ýlgili metodun korunacaðýný ifade ettik. User rolune sahip olan bir kullanýcý eriþebilir.*/
         [HttpHead]
         [HttpGet(Name ="GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
@@ -51,12 +51,14 @@ namespace Presentation.Controllers
                  Ok(result.linkResponse.LinkedEntities):
                  Ok(result.linkResponse.ShapedEntities);
         }
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute(Name = "id")] int id)
         {
             var book = await _manager.BookService.GetOneBookByIDAsync(id, false);
             return Ok(book);
         }
+        [Authorize]/*Admin post iþlemi yapabilir*/
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost(Name ="CreateOneBookAsync")]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
@@ -65,6 +67,7 @@ namespace Presentation.Controllers
                 return StatusCode(201, book); 
             /*CreatedAtRoute() bu metotla insert iþlemi yaparsak StatusCode yerine, response header'ýna location bilgisi koyabiliriz. Url'ýna eriþebiliriz.*/
         }
+        [Authorize(Roles="Admin,Editor")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]//, Order =1)]
         /*Order=1 önce validation yap. order=2 için önce order'1 gerçekleþsin sonra log atmalý sistem. Order öncelik sýrasý gibi*/
         [HttpPut("{id:int}")]
@@ -79,12 +82,14 @@ namespace Presentation.Controllers
                 await _manager.BookService.UpdateOneBookAsync(id, bookDto, false);
                 return NoContent();//204
         }
+        [Authorize(Roles ="Admin")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneBooks([FromRoute(Name = "id")] int id)
         {
                 await _manager.BookService.DeleteOneBookAsync(id, false);
                 return NoContent();
         }
+        [Authorize(Roles ="Admin")]
         [HttpPatch("{id:int}")]
         public async Task<IActionResult> PartiallyUpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
@@ -99,6 +104,7 @@ namespace Presentation.Controllers
             await _manager.BookService.SaveChangesForPatchAsync(result.bookDtoForUpdate, result.book);
                 return NoContent();
         }
+        [Authorize]
         [HttpOptions]
         public IActionResult GetBooksOptions()
         {
