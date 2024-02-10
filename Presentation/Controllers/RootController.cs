@@ -11,6 +11,7 @@ namespace Presentation.Controllers
     [ApiController]
     [Route("api")]
     /*Normal bir class'ı önce ControllerBase'den inherit ederek sonrasında ApiController ve route attribute yardımı ile controller çevirmiş olduk.*/
+    [ApiExplorerSettings(GroupName = "v1")]
     public class RootController : ControllerBase
     {
         private readonly LinkGenerator _linkGenerator;

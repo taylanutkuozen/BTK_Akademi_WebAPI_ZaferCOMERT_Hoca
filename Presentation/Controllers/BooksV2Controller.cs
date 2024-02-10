@@ -10,6 +10,7 @@ namespace Presentation.Controllers
     //[ApiVersion("2.0",Deprecated =true)]
     [ApiController]
     [Route("api/books")]
+    [ApiExplorerSettings(GroupName ="v2")] //Swagger için
     public class BooksV2Controller:ControllerBase
     {
         private readonly IServiceManager _manager;

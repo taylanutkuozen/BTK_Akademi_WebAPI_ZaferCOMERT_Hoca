@@ -15,6 +15,7 @@ using Services;
 using Services.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 namespace WebAPI.Extensions
 {
     public static class ServicesExtensions
@@ -173,6 +174,51 @@ namespace WebAPI.Extensions
                                  Son olarak Token'ı doğrulayacak parametreleri hazırladık.*/
                             }
                         );
+        }
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "BTK Akademi", 
+                    Version = "v1" ,
+                    Description="BTK Akademi ASP.NET Core Web API",
+                    TermsOfService=new Uri("https://www.btkakademi.gov.tr/"),
+                    Contact = new OpenApiContact
+                    {
+                        Name="Taylan Utku OZEN",
+                        Email="taylanutku.ozen@gmail.com"
+                        //Url=new Uri("....")
+                    }
+                });
+                s.SwaggerDoc("v2", new OpenApiInfo { Title = "BTK Akademi", Version = "v2" });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name = "Bearer"
+                        },
+                        new List<string>()
+                    }
+                });
+            });
         }
     }
 }

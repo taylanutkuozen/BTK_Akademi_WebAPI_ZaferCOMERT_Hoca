@@ -255,3 +255,8 @@ Client---(AccessToken)--->Resource Endpoints
 Client<---(AccessTokenExpired)---Resource Endpoints
 Client---(RefreshToken)--->AuthenticationComponent(ServerSide) /*Client herhangi bir user parametresi olmayan bir token gönderiliyor ve bu Token'a RefreshToken diyoruz. Token'ı yenileyecek. Önceden hazırlanmış. */
 Client<---(AccessToken&RefreshToken)---AuthenticationComponent(ServerSide) /* Kullanıcı hiç süresi dolmamış gibi rahat bir şekilde korumalı kaynaklara erişim sağlayabiliyor. */
+-------------------------
+Documenting
+About Swagger, Swagger Configuration, ApiExplorerSettings, Authorization Support, Extending Swagger Configuration, Documenting with Postman
+------------
+Documentation Postman=https://documenter.getpostman.com/view/29812013/2sA2r3YQoq

@@ -24,6 +24,7 @@ namespace Presentation.Controllers
     //[ResponseCache(CacheProfileName = "5mins")]/*Tüm requestler için Cache'leme iþlemi. Program.cs'deki controller config içerisindeki ismi. ExpirationModel*/
     //[HttpCacheExpiration(CacheLocation =CacheLocation.Public,MaxAge =80)]
     /*Kaynaða daha yakýn bir config ifadesi olduðu için ServiceExtension deðil yukarýdaki komut çalýþacaktýr.*/
+    [ApiExplorerSettings(GroupName ="v1")]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
