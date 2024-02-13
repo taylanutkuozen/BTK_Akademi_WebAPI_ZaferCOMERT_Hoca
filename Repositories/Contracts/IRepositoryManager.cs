@@ -9,6 +9,7 @@ namespace Repositories.Contracts
     {
         /*UnitofWork*/
         IBookRepository Book { get; }
+        ICategoryRepository Category { get; }
         Task SaveAsync(); /*void yerine yalın bir Task ifadesi gelir.*/
     }
 }
