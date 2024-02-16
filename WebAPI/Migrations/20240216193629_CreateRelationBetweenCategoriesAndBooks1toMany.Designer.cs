@@ -12,8 +12,8 @@ using Repositories.EFCore;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240216122032_CreateManyto1")]
-    partial class CreateManyto1
+    [Migration("20240216193629_CreateRelationBetweenCategoriesAndBooks1toMany")]
+    partial class CreateRelationBetweenCategoriesAndBooks1toMany
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,7 +66,7 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            BookID = 4,
+                            BookID = 3,
                             CategoryID = 1,
                             Price = 125m,
                             Title = "Incognito"
@@ -213,19 +213,19 @@ namespace WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9ad32d80-0895-4349-a247-3792cc35665c",
+                            Id = "50d3226f-9d47-4494-88a2-ab53190cf4c8",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9f9fa4a5-9109-45be-9d47-ec5c05a015e1",
+                            Id = "e680d962-9c81-4270-a192-a2e13f3e8b19",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "6b666d9d-7968-4ca9-ac73-04e13ef7db47",
+                            Id = "4098e4d6-f229-42f2-aff0-0e9c9ba1cca8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

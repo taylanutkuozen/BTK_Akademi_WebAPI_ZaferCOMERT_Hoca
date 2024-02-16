@@ -14,18 +14,18 @@ namespace Services
 {
     public class ServiceManager : IServiceManager
     {
-        private readonly Lazy<IBookService> _bookService;
-        private readonly Lazy<IAuthenticationService> _authenticationService;
-        private readonly Lazy<ICategoryService> _categoryService;
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerService logger, IMapper mapper, IBookLinks bookLinks, UserManager<User> userManager,IConfiguration configuration)
+        private readonly IBookService _bookService;
+        private readonly IAuthenticationService _authenticationService;
+        private readonly ICategoryService _categoryService;
+        public ServiceManager(ICategoryService categoryService,IBookService bookService,IAuthenticationService authenticationService)
         {
-            _bookService = new Lazy<IBookService>(() => new BookManager(repositoryManager, logger, mapper, bookLinks));
-            _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationManager(logger, mapper, userManager, configuration));
-            _categoryService = new Lazy<ICategoryService>(()=> new CategoryManager(repositoryManager));
+            _categoryService = categoryService;
+            _bookService = bookService;
+            _authenticationService = authenticationService;
         }
         /*Repository Context=EF Core bağlıdır.*/
-        public IBookService BookService => _bookService.Value;
-        public IAuthenticationService AuthenticationService => _authenticationService.Value;
-        public ICategoryService CategoryService => _categoryService.Value;
+        public IBookService BookService => _bookService;
+        public IAuthenticationService AuthenticationService => _authenticationService;
+        public ICategoryService CategoryService => _categoryService;
     }
 }

@@ -10,8 +10,8 @@ namespace Entities.Models
         public int BookID { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
-        //public int CategoryID { get; set; }
+        public int CategoryID { get; set; }
         //Referans type : Navigation Property
-        //public Category Category { get; set; }
+        public Category Category { get; set; }
     }
 }

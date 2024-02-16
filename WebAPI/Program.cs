@@ -22,9 +22,10 @@ builder.Services.AddControllers(config =>
         })
     .AddXmlDataContractSerializerFormatters() /*Xml formatýnda çýktý verebilecektir. ExpandoObject kendi kuralý ile runtime'da üretiyor.*/
     .AddCustomCsvFormatter()
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     /*PresentationLayer tarafýndan entegre edildi. bu kod ile Controller yapýsýnýn bu projede çözülebilmesine olanak saðlanmýþ olundu*/
-    //.AddNewtonsoftJson();
+    .AddNewtonsoftJson(opt=>
+    opt.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.AddScoped<ValidationFilterAttribute>(); //IoC tarafýndan projede saðlanacaktýr.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -52,6 +53,8 @@ builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();/*Accessor ifadesi üzerinden çözümleme yapýlmasý gereklidir.*/
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.RegisterRepositories();
+builder.Services.RegisterServices();
 var app = builder.Build();
 var logger=app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);

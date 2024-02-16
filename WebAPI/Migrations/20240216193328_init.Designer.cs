@@ -12,8 +12,8 @@ using Repositories.EFCore;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240210074402_AddRefreshTokenFields")]
-    partial class AddRefreshTokenFields
+    [Migration("20240216193328_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,40 @@ namespace WebAPI.Migrations
                             BookID = 3,
                             Price = 125m,
                             Title = "Incognito"
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Computer Science"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Network"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Database Management System"
                         });
                 });
 
@@ -171,19 +205,19 @@ namespace WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e49118cb-853f-4317-aa9c-8e17063f7a14",
+                            Id = "5af238de-40e1-4ce3-b3a5-ee33062bc43f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "897d1a8f-b03b-4f05-bb38-d3e295a6a46c",
+                            Id = "06bd3eed-1bad-490a-b640-dee6fc7829d3",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "f11a5ee1-568f-4449-830a-d25586cfff01",
+                            Id = "bf28488c-d213-45bb-a814-d04a0f3dc094",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

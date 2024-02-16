@@ -260,3 +260,5 @@ Documenting
 About Swagger, Swagger Configuration, ApiExplorerSettings, Authorization Support, Extending Swagger Configuration, Documenting with Postman
 ------------
 Documentation Postman=https://documenter.getpostman.com/view/29812013/2sA2r3YQoq
+---------
+Client tarafındaki dosyayı server'a göndermek-File Upload
