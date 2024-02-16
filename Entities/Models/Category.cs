@@ -9,5 +9,7 @@ namespace Entities.Models
     {
         public int CategoryID { get; set; }
         public string? CategoryName { get; set; }
+        //Bir referans tanımı : Collection navigation property-Bire çok ilişki kurulumu(Foreign Key)
+        //public ICollection<Book> Books { get; set;}
     }
 }

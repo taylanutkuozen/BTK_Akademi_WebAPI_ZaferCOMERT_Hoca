@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.EFCore;
 
@@ -11,9 +12,11 @@ using Repositories.EFCore;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20240216121335_CreateRelationBetweenBookandCategoryManyto1")]
+    partial class CreateRelationBetweenBookandCategoryManyto1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            BookID = 4,
+                            BookID = 3,
                             CategoryID = 1,
                             Price = 125m,
                             Title = "Incognito"
@@ -210,19 +213,19 @@ namespace WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9ad32d80-0895-4349-a247-3792cc35665c",
+                            Id = "f8a58d10-b246-4e85-8225-0199c62a68a0",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9f9fa4a5-9109-45be-9d47-ec5c05a015e1",
+                            Id = "849cc29e-a05b-4632-8f8f-4404b26e319a",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "6b666d9d-7968-4ca9-ac73-04e13ef7db47",
+                            Id = "df53a3c7-01a1-4a5e-8c91-9da2abf3aab0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
